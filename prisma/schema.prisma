@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  clerk_id String @unique
+  email    String @unique
+  // User -> Jrnl
+  jrnls    Jrnl[]
+}
+
+model Jrnl {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+
+  // Jrnl -> User 
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+
+  // Jrnl -> Logs
+  logs Log[]
+
+  // Jrnl -> Settings
+  cover_color String
+  font_color  String
+  page_color  String
+}
+
+type Exercise {
+  exercise       String
+  intensity      String
+  reps_completed Int
+  reps_targeted  Int
+  weight         Int
+  weight_unit    Unit
+}
+
+enum Unit {
+  lbs
+  kgs
+}
+
+type Note {
+  note       String
+  checkable  Boolean
+  is_checked Boolean
+}
+
+type Food {
+  food     String
+  protein  Int
+  calories Int
+  fat      Int
+  sugar    Int
+  sodium   Int
+}
+
+model Log {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  jrnl      Jrnl      @relation(fields: [jrnlId], references: [id])
+  jrnlId    String    @db.ObjectId
+  createdAt DateTime  @default(now())
+  exercise  Exercise?
+  note      Note?
+  food      Food?
+  logType   Logs
+}
+
+enum Logs {
+  Exercise
+  Note
+  Food
+}
