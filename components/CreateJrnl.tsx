@@ -24,7 +24,6 @@ export default function CreateJrnl({ backFn, userId, userEmail }: { backFn: () =
       method: "POST",
     }).then((res) => res.json())
 
-    console.log(response)
   }
 
   return (
