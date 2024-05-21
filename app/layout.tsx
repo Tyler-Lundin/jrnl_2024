@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" data-theme="forest">
-        <body className={inter.className}>
+        <body className={`${inter.className} overflow-hidden`}>
           <Providers>
             {children}
           </Providers>

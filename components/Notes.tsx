@@ -63,17 +63,13 @@ export default function Notes({ jrnlId, page, pageId, pageColor, fontColor, date
     />)}
     <div className={`flex flex-col h-[calc(100%_-_6.5rem)]`}>
       <CreateNote jrnlId={jrnlId} pageId={pageId} pageColor={pageColor} fontColor={fontColor} date={date} />
-      <h2 className="text-center">
-        NOTES
-      </h2>
-      <div className="h-[2px] w-screen bg-black mb-2" />
       <ul className="grid content-start gap-2 h-screen overflow-y-auto overflow-x-hidden" key={pageId}>
         {page && Array.isArray(page?.note) && [...page?.note].map((NOTE, NOTE_INDEX) => (
           <div {...longPressEvent} key={`${NOTE.note_id}__${NOTE_INDEX}__${pageId}`}
             className={`${getShakeAnimation(NOTE_INDEX)} ${deleted.includes(NOTE_INDEX) ? "opacity-0" : `opacity-100`} relative w-screen transition-all z-40 h-min ${NOTE_INDEX === page.note.length}`}
           >
 
-            <div className={`p-2 flex relative transition-all duration-500  left-0 ${hovered.includes(NOTE_INDEX) ? "bg-red-400 scale-95" : "bg-white"} mx-2 border-black border-4 border-t rounded-lg px-8`} style={{ color: fontColor }}>
+            <div className={`p-2 flex relative transition-all duration-500  left-0 ${hovered.includes(NOTE_INDEX) ? "bg-red-400 " : "bg-white"} mx-2 border-black border-4 border-t rounded-lg px-8`} style={{ color: fontColor }}>
               <div className="absolute right-8 top-1/2 -translate-y-1/2">
                 {NOTE.checkable && (
                   <Checkbox

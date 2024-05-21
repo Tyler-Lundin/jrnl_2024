@@ -9,9 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        left: "bg-white text-black border-black hover:bg-white/90 hover:translate-x-[2px] hover:-translate-y-[-1px] border border-b-4 border-r-4 hover:border-[1px] hover:border-black/10 ",
-        right: "bg-white text-black border-black hover:bg-white/90 hover:translate-x-[-2px] hover:translate-y-[-1px] border border-b-4 border-l-4 hover:border-[1px] hover:border-black/10",
-        rightDisabled: "bg-white text-black border-black hover:bg-white/90 hover:translate-x-[-2px] hover:translate-y-[-1px] border  hover:border-black/10",
+        left: "bg-white text-black border-black hover:bg-white/90 hover:translate-x-[2px] border border-b-4 border-r-4 hover:border-[1px] hover:border-black/10 ",
+        right: "bg-white text-black border-black hover:bg-white/90 hover:translate-x-[-2px] border border-b-4 border-l-4 hover:border-[1px] hover:border-black/10",
+        rightDisabled: "bg-white text-black border-black hover:bg-white/90 translate-x-[-2px] border hover:border-black/10",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
