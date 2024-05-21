@@ -13,7 +13,6 @@ export function SizeFromLength(S: string): string {
 
   // Define the size mapping
   const sizeMapping = [
-    { maxLen: 3, size: '6xl' },
     { maxLen: 6, size: '4xl' },
     { maxLen: 12, size: '3xl' },
     { maxLen: 24, size: '2xl' },
@@ -31,6 +30,5 @@ export function SizeFromLength(S: string): string {
     }
   }
 
-  // Default size for lengths greater than 70
-  return 'text-xs'; // Equivalent to text-xs but can be adjusted for even smaller sizes
+  return 'text-4xl'; // Equivalent to text-xs but can be adjusted for even smaller sizes
 }
